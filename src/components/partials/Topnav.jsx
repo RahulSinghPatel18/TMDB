@@ -25,10 +25,10 @@ useEffect(() => {
     
   return (
     <>
-    <div className="w-full h-[10vh] gap-4  flex justify-center items-center relative">
+    <div className="w-full h-[8vh] gap-4  flex justify-center items-center relative">
     <i className="text-zinc-400 text-3xl ri-search-2-line"></i>
     <input ref={inputRef}  onChange={(e)=> setquery(e.target.value)} 
-    value={query} className='w-[70vh] p-2 outline-none  text-white bg-transparent    rounded' 
+    value={query} className='w-[60vh] p-2 outline-none  text-white bg-transparent    rounded' 
     type="text" placeholder=' search...' />
 
        {/* setquery is empty */}

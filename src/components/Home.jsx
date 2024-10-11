@@ -5,13 +5,14 @@ import axios from '../utils/axios'
 import Header from './partials/Header'
 import HorizontalCards from './partials/HorizontalCards'
 import Dropdown from './partials/Dropdown'
+import Loading from './Loading'
  
  const Home = () => {
   const handleFilterChange = (e) => {
     const selectedValue = e.target.value;
    setcategory(selectedValue)
-
   };
+  
     document.title = "TMDB | Homepage"
 
      const [wallpaper, setwallpaper] = useState(null);
@@ -44,8 +45,9 @@ import Dropdown from './partials/Dropdown'
 
   useEffect(()=>{
     GetTrending();
-    !wallpaper && GetHeaderWallpaper();
-    !trending && GetTrending();
+    GetHeaderWallpaper();
+    // !wallpaper && GetHeaderWallpaper();
+    // !trending && GetTrending();
   },[category]);
   // console.log(trending)
 
@@ -54,6 +56,7 @@ import Dropdown from './partials/Dropdown'
    return wallpaper ? (
      <>
      <Sidenav/>  
+     
         <div className="w-[80%] h-full">  
         <Topnav/>
          <Header data={wallpaper}/>
@@ -63,13 +66,13 @@ import Dropdown from './partials/Dropdown'
           Trending
         </h1>
 
-        <Dropdown title="Filter" options={['tv', 'movie', 'all']} onChange={handleFilterChange} />
+        <Dropdown title="Filter" options={['tv', 'movie', 'all']} func={(e)=>setcategory(e.target.value)} />
         </div>
          <HorizontalCards data={trending} />
          </div>
    
      </>
-   ):<h1>Loading...</h1>
+   ):<Loading/>
  };
  
  export default Home

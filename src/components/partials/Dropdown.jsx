@@ -1,19 +1,20 @@
-import React from "react";
+import React from 'react';
 
-const Dropdown = ({ title, options,onChange}) => {
+const Dropdown = ({ title, options, func }) => {
   return (
-      <div className="select">
-          <select defaultValue="0" onChange={onChange} name="format" id="format">
-              <option value="0" disabled>
-                  {title}
-              </option>
-              {options.map((o, i) => (
-                  <option key={i} value={o}>
-                      {o.toUpperCase()}
-                  </option>
-              ))}
-          </select>
-      </div>
+    <div className="select">
+      <select defaultValue="" onChange={func}
+        className='bg-zinc-700'
+      >
+        <option value="" disabled> {title}
+        </option>
+        {options.map((o, i) => (
+          <option key={i} value={o}>
+            {o.toUpperCase()}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
 

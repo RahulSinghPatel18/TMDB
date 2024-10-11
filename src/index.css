@@ -88,5 +88,5 @@ select {
     transition: 0.25s all ease;
   }
   .select:hover::after {
-    color: #6556cd;
+    color: #a3165a;
   }

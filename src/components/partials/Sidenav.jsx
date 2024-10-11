@@ -15,16 +15,16 @@ const Sidenav = () => {
  <h1 className="text-white font-semibold text-[18px] mt-6 ">
    New Feeds
  </h1>
- <Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+ <Link to='/trending' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
    <i className="hover:text-blue-500 ri-fire-fill"></i> Trending
    </Link>
-<Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='popular' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
   <i className="mr-2 hover:text-blue-500 ri-bard-fill"></i>Popular
    </Link>
-<Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='tvshow' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
   <i className="mr-2 hover:text-blue-500 ri-tv-fill"></i>Tv Shows 
   </Link>
-<Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='/movies' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
  <i className="hover:text-blue-500 ri-movie-2-fill"></i> Movies
   </Link>
 <Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>

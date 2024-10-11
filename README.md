@@ -18,6 +18,17 @@ baseUrl : 'https://api.themoviedb.org/3
 
  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjQ2YzU1YzJjYmYyMjg3NDBjNjYzYThmY2M0NTQ1MiIsIm5iZiI6MTcyODQ3MzA5NC44NTQ4LCJzdWIiOiI2NzA2MTRhOGE4ODYxNGQ2YjA4YWNlNzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.UhyTtoYh7gIUfOrIpzoLnarfAKypn6WNJ7SJ92SsBMM'
 
+next is infinite-scrooling 
+
+trending page pe  dropdown data day, week, moview page, popular,tvshow
+
+trending- (`trending/${category}/${duration}?page=${page})
+popular- (`/${category}/popular?page=${page}`)
+movies- (`/movie/${category}?page=${page}`)
+tvshow- (`/tv/${category}?page=${page}`)
+
+
+
 
 
 

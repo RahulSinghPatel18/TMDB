@@ -1,6 +1,10 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
+import Trending from './components/Trending'
+import Popular from './components/Popular'
+import Movies from './components/Movies'
+import TvShow from './components/TvShow'
 
 
 const App = () => {
@@ -10,6 +14,10 @@ const App = () => {
     <div className='flex bg-[#1f1e24] w-screen h-screen'>  
      <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path='/trending' element={<Trending/>}/>
+      <Route path='/popular' element={<Popular/>}/>
+      <Route path='/movies' element={<Movies/>}></Route>
+      <Route path='/tvshow' element={<TvShow/>}></Route>
      </Routes>
     </div>
     </>
