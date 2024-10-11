@@ -25,7 +25,7 @@ useEffect(() => {
     
   return (
     <>
-    <div className="w-full h-[8vh] gap-4  flex justify-center items-center relative">
+    <div className="w-full h-[8vh] gap-4  z-50 flex justify-center items-center relative">
     <i className="text-zinc-400 text-3xl ri-search-2-line"></i>
     <input ref={inputRef}  onChange={(e)=> setquery(e.target.value)} 
     value={query} className='w-[60vh] p-2 outline-none  text-white bg-transparent    rounded' 
@@ -38,7 +38,8 @@ useEffect(() => {
     <div className=" absolute w-[60%] max-h-[49vh]  overflow-auto   bg-zinc-100 top-[90%]">
 
         {/* map all the searches results */}
-       {searches.map((s,i)=>  <Link key={i} className='font-semibold inline-block   text-zinc-100 w-[100%] p-6 flex justify-start items-center bg-zinc-800 border-b-2 border-sky-600 hover:text-zinc-300'>
+       {searches.map((s,i)=> 
+      <Link to={`/${s.media_type}/details/${s.id}`} key={i} className='font-semibold inline-block   text-zinc-100 w-[100%] p-6 flex justify-start items-center bg-zinc-800 border-b-2 border-sky-600 hover:text-zinc-300'>
         <img  className='w-[10vh] h-[8vh] object-cover mx-5 rounded-xl hover:shadow-xl '
 
          src= {s.backdrop_path || s.profile_path ? `https://image.tmdb.org/t/p/original/${s.backdrop_path || s.profile_path}` : noimage } alt="" />

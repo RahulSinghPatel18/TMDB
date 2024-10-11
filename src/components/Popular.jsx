@@ -55,7 +55,7 @@ const Popular = () => {
               onClick={() => navigate('/')}
               className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
             ></i>{' '}
-            Popular<small className='mx-1 text-[17px] text-sky-500'>({ category})</small>
+            Popular<small className='mx-1 text-[17px] text-pink-500'>({ category})</small>
           </h1>
 
           <div className="flex items-center gap-[30vh] ">
@@ -80,7 +80,7 @@ const Popular = () => {
             endMessage={<p>No more data</p>} // Message when no more data to fetch
           >
 
-            <Cards data={popular} title={category} />
+            <Cards data={popular} title='popular' />
           </InfiniteScroll>
         </div>
       </div>

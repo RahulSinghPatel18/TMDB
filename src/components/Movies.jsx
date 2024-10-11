@@ -58,7 +58,7 @@ const Movies = () => {
               onClick={() => navigate('/')}
               className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
             ></i>{' '}
-            Movies<small className='mx-1 text-[17px] text-sky-700'>({ category})</small>
+            Movies<small className='mx-1 text-[17px] text-pink-500'>({ category})</small>
           </h1>
 
           <div className="flex items-center gap-[30vh] ">
@@ -83,7 +83,7 @@ const Movies = () => {
             endMessage={<p>No more data</p>} // Message when no more data to fetch
           >
 
-            <Cards data={movie} title={category} />
+            <Cards data={movie} title='movie' />
           </InfiniteScroll>
         </div>
       </div>

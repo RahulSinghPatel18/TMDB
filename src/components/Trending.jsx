@@ -58,7 +58,7 @@ const Trending = () => {
               onClick={() => navigate('/')}
               className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
             ></i>{' '}
-            Trending<small className='mx-1 text-[17px] text-sky-500'>({ category})</small>
+            Trending<small className='mx-1 text-[17px] text-pink-500'>({ category})</small>
           </h1>
           <div className="flex items-center ">
             <Topnav />
@@ -85,7 +85,7 @@ const Trending = () => {
             loader={<h1 className='text-center  text-2xl text-[#cf4a6b] '>Loading...</h1>} // Loader while fetching data
             endMessage={<p>No more data</p>} // Message when no more data to fetch
           >
-            <Cards data={trending} title={category} />
+            <Cards data={trending} title='trending' />
           </InfiniteScroll>
         </div>
       </div>

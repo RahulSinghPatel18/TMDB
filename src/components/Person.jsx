@@ -8,7 +8,7 @@ import Loading from './Loading'
 
 
 const People = () => {
-    document.title = "TMDB | person Shows";
+    document.title = "TMDB | Person S";
 
     const navigate = useNavigate();
     const [category, setcategory] = useState("popular");
@@ -57,7 +57,7 @@ const People = () => {
                   onClick={() => navigate('/')}
                   className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
                 ></i>{' '}
-               People<small className='mx-1 text-[17px] text-sky-700'>({ category})</small>
+               People<small className='mx-1 text-[17px] text-pink-500'>({ category})</small>
               </h1>
     
               <div className="flex items-center gap-[30vh] ">
@@ -77,7 +77,7 @@ const People = () => {
                 endMessage={<p>No more data</p>} // Message when no more data to fetch
               >
     
-                <Cards data={person} title={category} />
+                <Cards data={person} title='person' />
               </InfiniteScroll>
             </div>
           </div>
