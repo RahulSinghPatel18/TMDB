@@ -38,7 +38,11 @@ create moviedetals page, tvdetails page and person detail page
 
 learn find out the api and run the api postmen and get the TMDB data according to the data wo display more informations,  api-(get, create), redux toolkit-(store, reducers, actions), useref, useloaction, useSelector, useParams, usedispatch, state, props,
 
+react player install for videoplay & infinite scrolling in react & horizontal scrolling 
+import React from 'react'
+import ReactPlayer from 'react-player'
 
-
+// Render a YouTube video player
+<ReactPlayer url='https://www.youtube.com/watch?v=LXb3EKWsInQ' />r4
 
 

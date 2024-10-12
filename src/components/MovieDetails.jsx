@@ -13,7 +13,7 @@ const MovieDetails = () => {
   const {info} = useSelector(state => state.movie);
  const dispatch = useDispatch();
 
- console.log(info)
+//  console.log(info)
 
 useEffect(()=>{
   dispatch(asyncloadmovie(id))
@@ -30,12 +30,12 @@ useEffect(()=>{
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-        }}  className="w-screen h-[150vh] px-[5%]">
+        }}  className="w-screen relative h-[150vh] px-[5%]">
       
 
       {/* -------detail.popularity -------- */}
-  { info.detail.popularity && ( <div className="w-5 h-5 mx-[32.5vh] absolute z-40 mt-[48vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">
-       {(info.detail.popularity).toFixed() }
+  { info.detail.vote_average && ( <div className="w-5 h-5 mx-[32.5vh] absolute z-40 mt-[48vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">
+       {(info.detail.vote_average).toFixed() }
        </div>
     )}
 
@@ -99,7 +99,8 @@ useEffect(()=>{
          && info.watchproviders.flatrate 
           && ( <div className='flex gap-x-10  items-center text-white'>
             <h1>Available on flatrate  </h1>
-            {info.watchproviders.flatrate.map((w) => (<img 
+            {info.watchproviders.flatrate.map((w,i) =>
+             (<img key={i}
              title={w.provider_name}
            className='w-[5vh] h[5vh] object-cover rounded-md'
           src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
@@ -111,7 +112,8 @@ useEffect(()=>{
          && info.watchproviders.rent 
           && ( <div className='flex gap-x-10  items-center text-white'>
             <h1>Available on rent </h1>
-            {info.watchproviders.rent.map((w) => (<img 
+            {info.watchproviders.rent.map((w,i) => (
+            <img key={i}
              title={w.provider_name}
            className='w-[5vh] h[5vh] object-cover rounded-md'
           src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
@@ -124,7 +126,8 @@ useEffect(()=>{
          && info.watchproviders.buy 
           && ( <div className='flex gap-x-10  items-center text-white'>
             <h1>Available on buy </h1>
-            {info.watchproviders.buy.map((w) => (<img 
+            {info.watchproviders.buy.map((w,i) => 
+            (<img key={i}
             title={w.provider_name}
            className='w-[5vh] h[5vh] object-cover rounded-md'
           src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
