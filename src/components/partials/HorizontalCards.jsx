@@ -18,7 +18,7 @@ console.log(data)
               alt=""
             />
 
-            <h1 className="text-l px-2 mt-2 font-black text-[#d7d7d7]">
+            <h1 className="text-l px-2 mt-2 font-black overflow-y-auto text-[#d7d7d7]">
               {d.title || d.name || d.original_name || d.original_title}
             </h1>
 

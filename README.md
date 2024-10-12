@@ -27,6 +27,16 @@ popular- (`/${category}/popular?page=${page}`)
 movies- (`/movie/${category}?page=${page}`)
 tvshow- (`/tv/${category}?page=${page}`)
 
+create a react redux toolkit and setup
+
+inside reducer 3 Slice create movieslice, personslice, tvslice
+
+dynamics routes create for movie, tv , person
+
+create moviedetals page, tvdetails page and person detail page
+
+
+learn find out the api and run the api postmen and get the TMDB data according to the data wo display more informations,  api-(get, create), redux toolkit-(store, reducers, actions), useref, useloaction, useSelector, useParams, usedispatch, state, props,
 
 
 
