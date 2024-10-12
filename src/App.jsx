@@ -11,6 +11,8 @@ import TvDetails from './components/TvDetails'
 import PersonDetails from './components/PersonDetails'
 import Trailer from './components/partials/Trailer'
 import NotFound from './components/partials/NotFound'
+import About from './components/About'
+import Contact from './components/Contact'
 
 const App = () => {
 
@@ -31,8 +33,10 @@ const App = () => {
       
       <Route path='/person' element={<Person/>}/>{''}
       <Route path='/person/details/:id' element={<PersonDetails/>} />
-      <Route path='/person/details/:id/trailer' element={<Trailer/>}/>
-     
+   
+      <Route path='/notFound' element={<NotFound/>}/>
+      <Route path='/about' element={<About/>}/>
+      <Route path='/contact' element={<Contact/>}/>
      </Routes>
     </div>
     </>

@@ -15,19 +15,19 @@ const Sidenav = () => {
  <h1 className="text-white font-semibold text-[18px] mt-6 ">
    New Feeds
  </h1>
- <Link to='/trending' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+ <Link to='/trending' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
    <i className="hover:text-blue-500 ri-fire-fill"></i> Trending
    </Link>
-<Link to='popular' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='popular' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
   <i className="mr-2 hover:text-blue-500 ri-bard-fill"></i>Popular
    </Link>
-<Link to='tv' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='tv' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
   <i className="mr-2 hover:text-blue-500 ri-tv-fill"></i>Tv Shows 
   </Link>
-<Link to='/movie' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='/movie' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
  <i className="hover:text-blue-500 ri-movie-2-fill"></i> Movies
   </Link>
-<Link to='/person' className='hover:bg-[#f954ac] hover:text-white rounded-l p-4 duration-300'>
+<Link to='/person' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
 <i className="mr-2  hover:text-blue-500ri-team-fill"></i>People 
   </Link>
 </nav>
@@ -37,10 +37,10 @@ const Sidenav = () => {
  <h1 className="text-white text-[18px] font-semibold text-xl  mt-6 mb-3">
    Website Information
  </h1>
- <Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
+ <Link to='/about' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
  <i className="mr-2 hover:text-blue-500 ri-information-fill"></i> About
    </Link>
-<Link className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
+<Link to='/contact' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
 <i className="mr-2 hover:text-blue-500 ri-phone-fill"></i>Contact Us
    </Link>
 
