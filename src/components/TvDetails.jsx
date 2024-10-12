@@ -6,6 +6,7 @@ import { removetv } from '../store/reducers/tvSlice';
 import Loading from './Loading'
 import HorizontalCrads from './partials/HorizontalCards'
 
+
 const TvDetails = () => {
   const {pathname} = useLocation();
   const navigate = useNavigate();
@@ -13,12 +14,12 @@ const TvDetails = () => {
   const {info} = useSelector(state => state.tv);
  const dispatch = useDispatch();
 
- console.log(info)
+//  console.log(info)
 
 useEffect(()=>{
   dispatch(asyncloadtv(id))
   return ()=>{
-    dispatch(removetv);
+    dispatch(removetv());
   }
 },[id])
 
@@ -83,9 +84,13 @@ useEffect(()=>{
        <p className='mt-2 mb-5 text-[15px] '>{info.translations.join(' ')}</p>
 
         {/* ------- Play trailer ------- */}
-        <Link  to={`${pathname}/trailer`} className=' p-4 bg-[#c6326d] rounded-lg'>
-        <i className="mr-3 text-xl ri-play-fill"></i>  Play Trailer
-         </Link>
+        {info.videos ? (
+  <Link to={`${pathname}/trailer`} className="p-4 bg-[#c6326d] rounded-lg" target="_blank" rel="noopener noreferrer" href={`https://www.youtube.com/watch?v=${info.videos}`}>
+    <i className="mr-3 text-xl ri-play-fill"></i> Play Trailer
+  </Link>
+) : (
+  <p className="text-red-500">No trailer available</p>
+)}
       </div>
         </div>
         </div>
