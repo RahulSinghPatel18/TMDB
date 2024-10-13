@@ -1,20 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-  info: null,
-
-};
-
-
 export const personSlice = createSlice({
     name: 'person',
-    initialState,
+    initialState : null,
     reducers: {
         loadperson: (state, action)=>{
             state.info = action.payload;
         },
 
-        removeperson:(state, action)=>{
+        removeperson:(state,action)=>{
             state.info = null;
         }
       },

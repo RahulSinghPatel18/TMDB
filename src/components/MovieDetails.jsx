@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { asyncloadmovie } from '../store/actions/MoviewActions';
+import { asyncloadmovie } from '../store/actions/MovieActions';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { removemovie } from '../store/reducers/movieSlice';
 import Loading from './Loading'
@@ -10,7 +10,7 @@ const MovieDetails = () => {
   const {pathname} = useLocation();
   const navigate = useNavigate();
   const {id} = useParams();
-  const {info} = useSelector(state => state.movie);
+  const {info} = useSelector((state) => state.movie);
  const dispatch = useDispatch();
 
 //  console.log(info)
@@ -18,7 +18,7 @@ const MovieDetails = () => {
 useEffect(()=>{
   dispatch(asyncloadmovie(id))
   return ()=>{
-    dispatch(removemovie);
+    dispatch(removemovie());
   }
 },[id])
 

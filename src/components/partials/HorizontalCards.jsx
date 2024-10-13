@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import NotFound from '../../components/partials/NotFound'
+import noimage from '../../../public/noimage.png'
 
-const HorizontalCards = ({ data}) => {
+const HorizontalCards = ({data}) => {
 
   return (
     <div className="w-full h-[33vh] overflow-y-hidden  ">
@@ -13,7 +14,11 @@ const HorizontalCards = ({ data}) => {
            
             <img
               className="w-full h-[30%] object-cover hover:scale-110 transition-all duration-300 rounded-lg"
-              src={`https://image.tmdb.org/t/p/original/${d.backdrop_path || d.poster_path}`}
+              src={   d.backdrop_path || d.poster_path 
+                ? `https://image.tmdb.org/t/p/original/${
+                d.backdrop_path || d.poster_path
+              }` : noimage
+            }
               alt=""
             />
 

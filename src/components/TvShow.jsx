@@ -9,8 +9,9 @@ import Cards from './partials/Cards';
 
 const TvShow = () => {
   document.title = 'TMDB | TvShow';
+
   const navigate = useNavigate();
-  const [category, setcategory] = useState('popular'); // Set initial category state
+  const [category, setcategory] = useState('popular'); 
   const [tv, settv] = useState([]);
   const [hasMore, sethasMore] = useState(true);
   const [page, setpage] = useState(1);
@@ -53,10 +54,10 @@ const TvShow = () => {
     <>
       <div className="px-[2%] w-screen h-screen bg-zinc-800">
         <div className="w-full flex items-center justify-between py-4">
-          <h1 className="text-2xl text-zinc-400 font-semibold">
+          <h1 className="text-2xl text-white font-semibold">
             <i
               onClick={() => navigate('/')}
-              className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
+              className="hover:text-[#f6609c] text-zinc-white ri-arrow-left-line cursor-pointer"
             ></i>{' '}
            TvShow<small className='mx-1 text-[17px] text-pink-500'>({ category})</small>
           </h1>

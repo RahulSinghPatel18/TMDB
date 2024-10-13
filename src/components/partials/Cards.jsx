@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Loading from '../Loading';
+import noimage from '../../../public/noimage.png'
 
 const Cards = ({data, title,}) => {
 
@@ -19,7 +20,11 @@ const Cards = ({data, title,}) => {
        </div>
     )}
         <img className='shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[40vh] mt-4 hover:scale-105 transition-all rounded-xl object-cover'
-         src={`https://image.tmdb.org/t/p/original/${c.poster_path || c.backdrop_path || c.profile_path}`} alt=""
+         src={  c.poster_path || c.backdrop_path || c.profile_path
+           ? `https://image.tmdb.org/t/p/original/${
+          c.poster_path || c.backdrop_path || c.profile_path
+        }` : noimage
+      } alt=""
           />
        
        <h1 className='text-xl text-[#acacac]  mt-3 font-semibold font-light'>

@@ -8,7 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Cards from './partials/Cards';
 
 const Movies = () => {
-  document.title = 'TMDB | Popular';
+  document.title = 'TMDB | Movies';
   const navigate = useNavigate();
   const [category, setcategory] = useState('now_playing'); // Set initial category state
   const [movie, setmovie] = useState([]);

@@ -7,14 +7,17 @@ import HorizontalCards from './partials/HorizontalCards'
 import Dropdown from './partials/Dropdown'
 import Loading from './Loading'
  
+
+
+
  const Home = () => {
+  document.title = "TMDB | Homepage"
+  
   const handleFilterChange = (e) => {
     const selectedValue = e.target.value;
    setcategory(selectedValue)
   };
   
-    document.title = "TMDB | Homepage"
-
      const [wallpaper, setwallpaper] = useState(null);
      const [trending, settrending] = useState(null);
      const [ category, setcategory] = useState('all');
