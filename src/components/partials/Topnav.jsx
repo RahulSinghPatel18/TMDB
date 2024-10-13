@@ -2,6 +2,7 @@ import axios from '../../utils/axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import noimage from "../../../public/noimage.png"
+import {motion} from 'framer-motion'
 
 const Topnav = () => {
 const [query, setquery] = useState('');
@@ -28,11 +29,11 @@ useEffect(() => {
 }, [query])
     
 
-
-
   return (
     <>
-    <div className="w-full h-[8vh] gap-4  z-50 flex justify-center items-center relative">
+    <motion.div  initial={{ zIndex: -10,x:"-100%" }} 
+                animate={{ zIndex:0 ,x:'0'}}  transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5, opacity:0, }} 
+     className="w-full h-[8vh] gap-4  z-50 flex justify-center items-center relative opacity-1">
     <i className="text-zinc-400 text-3xl ri-search-2-line"></i>
     <input ref={inputRef} 
     onChange={(e)=> setquery(e.target.value)} 
@@ -59,7 +60,7 @@ useEffect(() => {
     
         
     </div>
-    </div>
+    </motion.div>
     </>
   )
 }

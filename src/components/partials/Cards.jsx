@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Loading from '../Loading';
 import noimage from '../../../public/noimage.png'
+import {motion} from "framer-motion"
 
 const Cards = ({data, title,}) => {
 // console.log(data)
@@ -11,7 +12,10 @@ const Cards = ({data, title,}) => {
 }
   return (
    <>
-   <div className='flex flex-wrap w-full bg-zinc-800  h-[100vh]  pt-4 '>
+   <motion.div  initial={{ zIndex: -10,y:"+100%" }} 
+                animate={{ zIndex:0 ,y:'0'}} 
+                 transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5, opacity:0, }} 
+   className='flex flex-wrap w-full bg-zinc-800  h-[100vh]  pt-4 '>
        {data.map((c, i)=>
        <Link key={i} to={`/${c.media_type || title}/details/${c.id}`}
         className='w-[25vh] laz mb-5 mx-4 relative' >
@@ -34,7 +38,7 @@ const Cards = ({data, title,}) => {
        </h1>
 
        </Link>)}
-   </div>
+   </motion.div>
    </>
   )
 }

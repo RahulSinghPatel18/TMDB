@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import {motion} from "framer-motion"
 
 const Header = ({ data }) => {
   //  console.log(data);
@@ -7,14 +8,15 @@ const Header = ({ data }) => {
   // {----------- bg data ----------}
     return (
      <>
-        <div style={{
+        <motion.div style={{
             backgroundImage: `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5), rgba(0,0,0,.8)),
              url(https://image.tmdb.org/t/p/original/${data.backdrop_path || data.profile_path})`,
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
         }} 
-        className="md:w-full md:h-[49vh] flex flex-col justify-end items-start p-[5%]">
+        initial={{y:'-100%'}} animate={{y:'0%'}} transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5,  }} 
+        className="md:w-full md:h-[49vh] flex flex-col justify-end items-start p-[5%] ">
             <h1 className='text-5xl mb-2 font-black text-[#d2d2d2] w-[70%]'>
               {data.title || data.orignal_name || data.orignal_title || data.name}
             </h1>
@@ -36,7 +38,7 @@ const Header = ({ data }) => {
             <Link to={`/${data.media_type}/details/${data.id}`} className='bg-[#bc4082] mt-4 font-sans px-4 py-4 rounded'>
                 Watch Trailer
             </Link>
-        </div>
+        </motion.div>
      </>
     )
 }

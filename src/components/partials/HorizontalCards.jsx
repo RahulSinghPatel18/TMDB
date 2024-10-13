@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import NotFound from '../../components/partials/NotFound'
 import noimage from '../../../public/noimage.png'
+import {motion} from 'framer-motion'
 
 const HorizontalCards = ({data}) => {
 
   return (
-    <div className="w-full h-[33vh] overflow-y-hidden  ">
+    <motion.div  initial={{ zIndex: -10, x:"+100%" }} 
+    animate={{ zIndex:0 ,x:'0'}} 
+     transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5, opacity:0, }} 
+     className="w-full h-[33vh] overflow-y-hidden  ">
       
-
       <div className="w-[100%] flex h-[40vh] px-2">
         {data.length > 0 ? data.map((d, i) => (
           <Link to={`/${d.media_type}/details/${d.id}`} key={i} className="min-w-[20%] h-[55vh] mr-8 overflow-hidden bg-zinc-900 rounded-xl">
@@ -34,7 +37,7 @@ const HorizontalCards = ({data}) => {
           </Link>
         )):<NotFound/> }
       </div>
-    </div>
+    </motion.div>
   );
 };
 

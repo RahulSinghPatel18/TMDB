@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {motion} from 'framer-motion'
 
 const Sidenav = () => {
  
   return (
     <>
-    <div className="w-[20%] h-full p-7 text-white  border-r-2 border-zinc-400 p-2">
+    <motion.div  initial={{ x: '-100%' }} 
+                animate={{ x:  '0%' }} 
+                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}  className="w-[20%] h-full p-7  text-white  border-r-2 border-zinc-400 p-2">
       <h1 className='text-2xl text-white font-bold '>
       <i className="text-[#f954ac] mr-2  ri-tv-fill hover:text-[#7b7ef8] transition-all duration-300"></i>
         <span className='text-[18px] hover:text-[#7b7ef8] transition-all duration-300 '>TMDB</span>
@@ -28,7 +31,7 @@ const Sidenav = () => {
  <i className="hover:text-blue-500 ri-movie-2-fill"></i> Movies
   </Link>
 <Link to='/person' className='hover:bg-[#f954ac] hover:text-white rounded-l p-3 duration-300'>
-<i className="mr-2  hover:text-blue-500ri-team-fill"></i>People 
+<i className="mr-2  hover:text-blue-500 ri-team-fill"></i>People 
   </Link>
 </nav>
 
@@ -46,7 +49,7 @@ const Sidenav = () => {
 
 </nav>
 
-    </div>
+    </motion.div>
     </>
   )
 }

@@ -6,14 +6,13 @@ import Header from './partials/Header'
 import HorizontalCards from './partials/HorizontalCards'
 import Dropdown from './partials/Dropdown'
 import Loading from './Loading'
- 
 
+ 
 
 
  const Home = () => {
   document.title = "TMDB | Homepage"
-  
-  
+
      const [wallpaper, setwallpaper] = useState(null);
      const [trending, settrending] = useState(null);
      const [ category, setcategory] = useState('all');
