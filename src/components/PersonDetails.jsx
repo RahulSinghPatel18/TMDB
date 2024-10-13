@@ -12,7 +12,7 @@ const PersonDetails = () => {
   const {info} = useSelector((state) => state.person);
  const dispatch = useDispatch();
 
- console.log(info);
+//  console.log(info);
 
 useEffect(()=>{
   dispatch(asyncloadperson(id));
@@ -21,6 +21,9 @@ useEffect(()=>{
     dispatch(removeperson());
   }
 },[id])
+
+
+
 
   return info ? (
     <>

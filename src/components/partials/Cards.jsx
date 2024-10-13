@@ -4,6 +4,7 @@ import Loading from '../Loading';
 import noimage from '../../../public/noimage.png'
 
 const Cards = ({data, title,}) => {
+// console.log(data)
 
   if (!data || data.length === 0) {
     return <div><Loading /></div>;
@@ -12,7 +13,8 @@ const Cards = ({data, title,}) => {
    <>
    <div className='flex flex-wrap w-full bg-zinc-800  h-[100vh]  pt-4 '>
        {data.map((c, i)=>
-       <Link key={i} to={`/${c.media_type || title}/details/${c.id}`} className='w-[25vh] laz mb-5 mx-4 relative' >
+       <Link key={i} to={`/${c.media_type || title}/details/${c.id}`}
+        className='w-[25vh] laz mb-5 mx-4 relative' >
          
          {/* --------- popularity circule ------- */}
          { c.vote_average && ( <div className="w-5 h-5 mx-[22vh] absolute z-40 mt-[30vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">

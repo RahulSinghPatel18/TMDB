@@ -8,7 +8,7 @@ import Loading from './Loading'
 
 
 const People = () => {
-    document.title = "TMDB | Person S";
+    document.title = "TMDB | Person ";
 
     const navigate = useNavigate();
     const [category, setcategory] = useState("popular");
@@ -31,7 +31,9 @@ const People = () => {
             console.log("Error: ", error);
         }
     };
-
+    // person ka data
+// console.log(person)
+  
     const refershHandler = () => {
         if (person.length === 0) {
             GetPerson();

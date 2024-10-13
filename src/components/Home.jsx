@@ -13,10 +13,6 @@ import Loading from './Loading'
  const Home = () => {
   document.title = "TMDB | Homepage"
   
-  const handleFilterChange = (e) => {
-    const selectedValue = e.target.value;
-   setcategory(selectedValue)
-  };
   
      const [wallpaper, setwallpaper] = useState(null);
      const [trending, settrending] = useState(null);
@@ -49,8 +45,7 @@ import Loading from './Loading'
   useEffect(()=>{
     GetTrending();
     GetHeaderWallpaper();
-    // !wallpaper && GetHeaderWallpaper();
-    // !trending && GetTrending();
+
   },[category]);
   // console.log(trending)
 

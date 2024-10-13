@@ -20,7 +20,7 @@ const Popular = () => {
   const GetPopular = async () => {
     try {
       const { data } = await axios.get(`/${category}/popular?page=${page}`);
-      // console.log(data.results);
+      console.log(data.results);
       if (data.results.length > 0) {
         setpopular((prevState) => [...prevState, ...data.results]);
         setpage(page + 1);
