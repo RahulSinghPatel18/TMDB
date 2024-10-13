@@ -1,26 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  info: null,
-
+    info: null,
 };
 
-
 export const tvSlice = createSlice({
-    name: 'tv',
+    name: "tv",
     initialState,
     reducers: {
-        loadtv: (state, action)=>{
+        loadtv: (state, action) => {
             state.info = action.payload;
         },
-
-        removetv:(state, action)=>{
+        removetv: (state, action) => {
             state.info = null;
-        }
-      },
-  })
-  
+        },
+    },
+});
 
-  export const {  loadtv , removetv} = tvSlice.actions
+export const { loadtv, removetv } = tvSlice.actions;
 
-export default tvSlice.reducer
+export default tvSlice.reducer;

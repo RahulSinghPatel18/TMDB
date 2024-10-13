@@ -1,153 +1,187 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { asyncloadperson ,removeperson } from '../store/actions/PersonActions';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import Loading from './Loading'
-import HorizontalCrads from './partials/HorizontalCards'
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { asynclaodperson } from "../store/actions/PersonActions";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import HorizontalCards from "./partials/HorizontalCards";
+import Loading from "./Loading";
+import Dropdown from "./partials/Dropdown";
+import { removeperson } from "../store/reducers/personSlice";
 
 const PersonDetails = () => {
-  const {pathname} = useLocation();
-  const navigate = useNavigate();
-  const {id} = useParams();
-  const {info} = useSelector((state) => state.person);
- const dispatch = useDispatch();
+    document.title = "SCSDB | Person Details";
 
-//  console.log(info);
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const { info } = useSelector((state) => state.person);
+    const dispatch = useDispatch();
+    const [category, setcategory] = useState("movie");
 
-useEffect(()=>{
-  dispatch(asyncloadperson(id));
-  
-  return ()=>{
-    dispatch(removeperson());
-  }
-},[id])
+    useEffect(() => {
+        dispatch(asynclaodperson(id));
+        return () => {
+            dispatch(removeperson());
+        };
+    }, [id]);
 
+    return info ? (
+        <div className="px-[10%] w-screen overflow-hidden sm:h-[150vh] h-[250vh] bg-[#1F1E24] ">
+            {/* Part 1 navigation */}
+            <nav className="h-[10vh] text-white w-full text-zinc-100 flex items-center gap-10 text-xl ">
+                <Link
+                    onClick={() => navigate(-1)}
+                    className="hover:text-[#cd5686] ri-arrow-left-line"
+                ></Link>
+            </nav>
 
+            <div className="w-full flex flex-col sm:flex-row ">
+                {/* Part 2 left Poster and Details */}
+                <div className="sm:w-[20%] w-[100%] ">
+                    <img
+                        className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[35vh] object-cover"
+                        src={`https://image.tmdb.org/t/p/original/${info.detail.profile_path}`}
+                        alt=""
+                    />
+                    <hr className="mt-10 mb-5 border-none h-[2px] bg-zinc-500" />
+                    {/* Sosial Media Links */}
+                    <div className="text-2xl text-white flex gap-x-5">
+                        <a
+                            target="_blank"
+                            href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
+                        >
+                            <i className="ri-earth-fill"></i>
+                        </a>
 
+                        <a
+                            target="_blank"
+                            href={`https://www.facebook.com/${info.externalid.facebook_id}`}
+                        >
+                            <i className="ri-facebook-circle-fill"></i>
+                        </a>
 
-  return info ? (
-    <>
-    <div style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5), rgba(0,0,0,.8)),
-             url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path })`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-        }}  className="w-screen relative h-[150vh] px-[5%]">
-      
+                        <a
+                            target="_blank"
+                            href={`https://www.instagram.com/${info.externalid.instagram_id}`}
+                        >
+                            <i className="ri-instagram-fill"></i>
+                        </a>
+                        <a
+                            target="_blank"
+                            href={`https://twitter.com/${info.externalid.twitter_id}`}
+                        >
+                            <i className="ri-twitter-x-fill"></i>
+                        </a>
+                    </div>
+                    {/* Personal Information */}
+                    <h1 className="text-2xl text-zinc-400 font-semibold my-5">
+                        Person Info
+                    </h1>
 
-      {/* -------detail.popularity -------- */}
-  { info.detail.vote_average && ( <div className="w-5 h-5 mx-[32.5vh] absolute z-40 mt-[48vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">
-       {(info.detail.vote_average).toFixed() }
-       </div>
-    )}
+                    <h1 className="text-lg text-zinc-400 font-semibold ">
+                        Known For
+                    </h1>
+                    <h1 className=" text-zinc-400 ">
+                        {info.detail.known_for_department}
+                    </h1>
 
-      {/* --------part1 navigattion----------- */}
-      
-      <nav className='w-full h-[10vh] items-center text-zinc-100 flex gap-10 text-2xl  '>
-      <Link 
-       onClick={() => navigate(-1)}
-              className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
-            ></Link>
-           <a className='hover:text-[#d8459b]' target='_blank' href={info.detail.homepage}><i class="ri-external-link-line"></i></a>
-          <a  className='hover:text-[#d8459b]' target='_blank' href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}><i class="ri-earth-fill"></i></a>
-          <a  className='hover:text-[#d8459b]' target='_blank' href={`https://www.imdb.com/title/${info.externalid.imdb_id}`}>TMDB</a>
-      </nav>
+                    <h1 className="text-lg text-zinc-400 font-semibold mt-3 ">
+                        Gender
+                    </h1>
+                    <h1 className=" text-zinc-400 ">
+                        {info.detail.gender === 2 ? "Male" : "Female"}
+                    </h1>
 
+                    <h1 className="text-lg text-zinc-400 font-semibold mt-3 ">
+                        Birthday
+                    </h1>
+                    <h1 className=" text-zinc-400 ">{info.detail.birthday}</h1>
 
+                    <h1 className="text-lg text-zinc-400 font-semibold mt-3 ">
+                        Deathday
+                    </h1>
+                    <h1 className=" text-zinc-400 ">
+                        {info.detail.deathday
+                            ? info.detail.deathday
+                            : "Still Alive"}
+                    </h1>
 
-        {/* --------part2 poster and details----------- */}
-        <div className="flex w-[35vh]">
-           <img className='shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[60vh] mt-1 hover:scale-105 transition-all rounded-xl object-cover'
-         src={`https://image.tmdb.org/t/p/original/${info.detail.backdrop_path || info.detail.profile_path}`} alt=""
-          />
+                    <h1 className="text-lg text-zinc-400 font-semibold mt-3 ">
+                        Place Of Birth
+                    </h1>
+                    <h1 className=" text-zinc-400 ">
+                        {info.detail.place_of_birth}
+                    </h1>
 
-             <div className="content ml-[5%]">
-              {/* ---- release date -------- */}
-          <span className='text-5xl px-5 text-white font-bold  '>
-            {info.detail.name || info.detail.title || info.detail.original_name || info.detail.original_title}
-            <small className='text-xl font-bold text-zinc-300'>
-              ({info.detail.release_date})</small>
-          </span>
-        
-          <div className='flex mx-5  w-[100vh] text-white items-center gap-x-5 '>
-       <h1 className='text-[22px]'>User Score</h1>
-       <h1> Release-{info.detail.release_date}</h1>
-    </div>
-    <div className='flex w-[135vh]  text-white gap-x-5 px-5'>
-      <h1 >{info.detail.genres.map((g)=> g.name).join(',')}</h1>
-       <h1>{info.detail.runtime}min</h1>
-       </div>
-      <div className='px-5  text-white w-[132vh]'>
-      <h1 className=' mt-1 text-zinc-200 font-bold'>{info.detail.tagline}</h1>
-       <h1 className=' mt-2'>Overview</h1>
-       <p className=' mt-3 text-[15px]'>{info.detail.overview}</p>
-       <h1 className='mt-2'>Movie Translated</h1>
-       <p className='mt-2 mb-5 text-[15px] '>{info.translations.join(' ')}</p>
+                    <h1 className="text-lg text-zinc-400 font-semibold mt-3 ">
+                        Also Known As
+                    </h1>
+                    <h1 className=" text-zinc-400 ">
+                        {info.detail.also_known_as.join(", ")}
+                    </h1>
+                </div>
 
-        {/* ------- Play trailer ------- */}
-        <Link  to={`${pathname}/trailer`} className=' p-4 bg-[#c6326d] rounded-lg'>
-        <i className="mr-3 text-xl ri-play-fill"></i>  Play Trailer
-         </Link>
-      </div>
+                {/* Part 3 right Details and information  */}
+                <div className="w-[80%] ml-[5%]">
+                    <h1 className="text-6xl text-zinc-400 font-black my-5">
+                        {info.detail.name}
+                    </h1>
+
+                    <h1 className="text-xl text-zinc-400 font-semibold ">
+                        Biography
+                    </h1>
+                    <p className="text-zinc-400 mt-3 ">
+                        {info.detail.biography}
+                    </p>
+
+                    <h1 className="mt-5 text-lg text-zinc-400 font-semibold ">
+                        Known For
+                    </h1>
+                    <HorizontalCards data={info.combinedCredits.cast} />
+
+                    <div className="w-full flex justify-between">
+                        <h1 className="mt-5 text-xl text-zinc-400 font-semibold ">
+                            Acting
+                        </h1>
+
+                        <Dropdown
+                            title="Catgory"
+                            options={["tv", "movie"]}
+                            func={(e) => setcategory(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="list-disc text-zinc-400 w-full h-[50vh] mt-5 overflow-x-hidden overflow-y-auto shadow-xl shadow-[rgba(255,255,255,.3)] border-2 border-zinc-700 p-5">
+                        {info[category + "Credits"].cast.map((c, i) => (
+                            <li
+                                key={i}
+                                className="hover:text-white p-5 rounded hover:bg-[#19191d]  duration-300 cursor-pointer"
+                            >
+                                <Link
+                                    to={`/${category}/details/${c.id}`}
+                                    className=""
+                                >
+                                    <span>
+                                        {" "}
+                                        {c.name ||
+                                            c.title ||
+                                            c.original_name ||
+                                            c.original_title}
+                                    </span>
+
+                                    <span className="block ml-5 mt-2">
+                                        {c.character &&
+                                            `Character Name:  ${c.character}`}
+                                    </span>
+                                </Link>
+                            </li>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-   
-    
+    ) : (
+        <Loading />
+    );
+};
 
-    {/* -----part 3 available plateform--------- */}
-       <div className="mt-10  w-[80%] flex flex-col gap-y-5 mb-5  ">
-
-       {info.watchproviders 
-         && info.watchproviders.flatrate 
-          && ( <div className='flex gap-x-10  items-center text-white'>
-            <h1>Available on flatrate  </h1>
-            {info.watchproviders.flatrate.map((w,i) =>
-             (<img key={i}
-             title={w.provider_name}
-           className='w-[5vh] h[5vh] object-cover rounded-md'
-          src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
-           alt='' /> ))}
-            </div>
-          )}
-
-        {info.watchproviders 
-         && info.watchproviders.rent 
-          && ( <div className='flex gap-x-10  items-center text-white'>
-            <h1>Available on rent </h1>
-            {info.watchproviders.rent.map((w,i) => (
-            <img key={i}
-             title={w.provider_name}
-           className='w-[5vh] h[5vh] object-cover rounded-md'
-          src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
-           alt='' /> ))}
-            </div>
-          )}
-
-
-        {info.watchproviders 
-         && info.watchproviders.buy 
-          && ( <div className='flex gap-x-10  items-center text-white'>
-            <h1>Available on buy </h1>
-            {info.watchproviders.buy.map((w,i) => 
-            (<img key={i}
-            title={w.provider_name}
-           className='w-[5vh] h[5vh] object-cover rounded-md'
-          src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
-           alt='' /> ))}
-            </div>
-          )}    
-   </div>
-<hr className='mt-10 border-none h-[2px] bg-zinc-500 mb-5'></hr>
-    {/* ----- part 4 recommendation & similar --------- */}
-    <h1 className='text-2xl font-semibold text-white mb-5'>Recommendations & Similar</h1>
-    <HorizontalCrads data={info.recommendations.length >0  ? info.recommendations : info.similar} />
-  
-      </div>
-      </>
-  ):(
-    <Loading/>
-  );
-}
-
-export default PersonDetails
+export default PersonDetails;

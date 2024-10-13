@@ -1,150 +1,121 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { asyncloadmovie } from '../store/actions/MovieActions';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { removemovie } from '../store/reducers/movieSlice';
-import Loading from './Loading'
-import HorizontalCrads from './partials/HorizontalCards'
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { asynclaodmovie } from "../store/actions/MovieActions";
+import { removemovie } from '../store/reducers/movieSlice'
+import Loading from '../components/Loading'
+import HorizontalCards from '../components/partials/HorizontalCards'
 
 const MovieDetails = () => {
-  const {pathname} = useLocation();
-  const navigate = useNavigate();
-  const {id} = useParams();
-  const {info} = useSelector((state) => state.movie);
- const dispatch = useDispatch();
+    const { pathname } = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const { id } = useParams()
+    const { info } = useSelector(state => state.movie)
+    console.log(info);
 
- console.log(info)
+    useEffect(() => {
+        dispatch(asynclaodmovie(id))
 
-useEffect(()=>{
-  dispatch(asyncloadmovie(id))
-  return ()=>{
-    dispatch(removemovie());
-  }
-},[id])
-
-  return info ? (
-    <>
-    <div style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5), rgba(0,0,0,.8)),
-             url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path })`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-        }}  className="w-screen relative h-[150vh] px-[5%]">
-      
-
-      {/* -------detail.popularity -------- */}
-  { info.detail.vote_average && ( <div className="w-5 h-5 mx-[32.5vh] absolute z-40 mt-[48vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">
-       {(info.detail.vote_average).toFixed() }
-       </div>
-    )}
-
-      {/* --------part1 navigattion----------- */}
-      
-      <nav className='w-full h-[10vh] items-center text-zinc-100 flex gap-10 text-2xl  '>
-      <Link 
-       onClick={() => navigate(-1)}
-              className="hover:text-[#f6609c] text-zinc-400 ri-arrow-left-line cursor-pointer"
-            ></Link>
-           <a className='hover:text-[#d8459b]' target='_blank' href={info.detail.homepage}><i class="ri-external-link-line"></i></a>
-          <a  className='hover:text-[#d8459b]' target='_blank' href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}><i class="ri-earth-fill"></i></a>
-          <a  className='hover:text-[#d8459b]' target='_blank' href={`https://www.imdb.com/title/${info.externalid.imdb_id}`}>TMDB</a>
-      </nav>
+        return () => {
+            dispatch(removemovie())
+        }
+    }, [id])
 
 
 
-        {/* --------part2 poster and details----------- */}
-        <div className="flex w-[35vh]">
-           <img className='shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] h-[60vh] mt-1 hover:scale-105 transition-all rounded-xl object-cover'
-         src={`https://image.tmdb.org/t/p/original/${info.detail.backdrop_path || info.detail.profile_path}`} alt=""
-          />
+    return info ? (
+        <div
+            style={{
+                background: `linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.5), rgba(0,0,0,.8)), 
+                url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+            }}
+            className="relative w-screen sm:h-[150vh] overflow-hidden h-[200vh] px-[10%] font-normal"
+        >
+            {/* Part 1 navigation */}
+            <nav className='w-full h-[10vh] flex text-white  items-center gap-10 text-xl'>
+                <Link
+                    onClick={() => navigate(-1)}
+                    className="hover:text-[#b6487b] ri-arrow-left-line"
+                ></Link>
+                <a target="_blank" href={info.detail.homepage}>
+                    <i className="ri-external-link-fill hover:text-[#b6487b]"></i>
+                </a>
+                <a
+                    target="_blank"
+                    href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
+                >
+                    <i className="ri-earth-fill hover:text-[#b6487b] "></i>
+                </a>
 
-             <div className="content ml-[5%]">
-              {/* ---- release date -------- */}
-          <span className='text-5xl px-5 text-white font-bold  '>
-            {info.detail.name || info.detail.title || info.detail.original_name || info.detail.original_title}
-            <small className='text-xl font-bold text-zinc-300'>
-              ({info.detail.release_date})</small>
-          </span>
-        
-          <div className='flex mx-5  w-[100vh] text-white items-center gap-x-5 '>
-       <h1 className='text-[22px]'>User Score</h1>
-       <h1> Release-{info.detail.release_date}</h1>
-    </div>
-    <div className='flex w-[135vh]  text-white gap-x-5 px-5'>
-      <h1 >{info.detail.genres.map((g)=> g.name).join(',')}</h1>
-       <h1>{info.detail.runtime}min</h1>
-       </div>
-      <div className='px-5  text-white w-[132vh]'>
-      <h1 className=' mt-1 text-zinc-200 font-bold'>{info.detail.tagline}</h1>
-       <h1 className=' mt-2'>Overview</h1>
-       <p className=' mt-3 text-[15px]'>{info.detail.overview}</p>
-       <h1 className='mt-2'>Movie Translated</h1>
-       <p className='mt-2 mb-5 text-[15px] '>{info.translations.join(' ')}</p>
+                <a className='hover:text-[#b6487b] '
+                    target="_blank"
+                    href={`https://www.imdb.com/title/${info.externalid.imdb_id}/`}
+                >
+                   TMDB
+                </a>
+            </nav>
+            {/* Part 2 Poster and details */}
+            <div className='w-full text-white flex flex-col sm:flex-row'>
+                <img
+                    className="shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] rounded h-[50vh] object-cover"
+                    src={`https://image.tmdb.org/t/p/original/${info.detail.poster_path || info.detail.backdrop_path
+                        }`}
+                    alt=""
+                />
+                <div className='w-full ml-0 sm:ml-20'>
+                    <h1 className='text-5xl font-black'>{info.detail.original_title || info.detail.name ||
+                        info.detail.title || info.detail.original_name}
+                        <small className='text-2xl  font-semibold text-zinc-100'>({info.detail.release_date.split('-')[0]})</small>
+                    </h1>
+                    
+                    <div className="mt-3 mb-5 flex  items-center gap-x-3">
+                    <div className=" flex items-center justify-center">
+                       <span className="rounded-3xl p-2  font-semibold bg-yellow-500 text-white ">
+                            {(info.detail.vote_average * 10).toFixed()}
+                           %
+                        </span>
+                       </div>
+                        <h1 className="w-[60px] font-semibold text-2xl leading-6">
+                            User Score
+                        </h1>
+                        <h1 className='font-normal'>{info.detail.release_date}</h1>
+                        <h1 className='font-normal'>
+                            {info.detail.genres.map((g) => g.name).join(",")}
+                        </h1>
+                        <h1 className='font-normal'>{info.detail.runtime}min</h1>
+                    </div>
+                    <h1 className='text-2xl italic font-medium text-zinc-100'>{info.detail.tagline}</h1>
+                    <h1 className="text-2xl sm:mb-3  sm:mt-5  mb-3  mt-5">Overview</h1>
+                    <p className='text-md'>{info.detail.overview}</p>
+                    <h1 className="text-2xl sm:mb-3  sm:mt-5  mb-3  mt-5">Movie Translated</h1>
+                    <p className="mb-10">{info.translations.join(", ")}</p>
+                    <Link
+                        className="p-5 bg-[#b6487b]  rounded-lg"
+                        to={`${pathname}/trailer`}
+                    >
+                        <i className="text-xl ri-play-fill mr-3 "></i>
+                        Play Trailer
+                    </Link>
+                </div>
+                {/** Part 3 Recommendations and Similar Stuff */}
 
-        {/* ------- Play trailer ------- */}
-        <Link  to={`${pathname}/trailer`} className=' p-4 bg-[#c6326d] rounded-lg'>
-        <i className="mr-3 text-xl ri-play-fill"></i>  Play Trailer
-         </Link>
-      </div>
+            </div>
+            <hr className='w-full sm:mt-20 mt-0' />
+            <h1 className=" text-3xl font-bold mt-5 mb-5 text-white ">
+                Recommendations & Similar stuff
+            </h1>
+           <div className=' w-full'>
+           <HorizontalCards title="movie" data={info.recommendations.length > 0
+                ? info.recommendations
+                : info.similar} />  
+       <Outlet/>
+           </div>
         </div>
-        </div>
-   
-    
 
-    {/* -----part 3 available plateform--------- */}
-       <div className="mt-10  w-[80%] flex flex-col gap-y-5 mb-5  ">
-
-       {info.watchproviders 
-         && info.watchproviders.flatrate 
-          && ( <div className='flex gap-x-10  items-center text-white'>
-            <h1>Available on flatrate  </h1>
-            {info.watchproviders.flatrate.map((w,i) =>
-             (<img key={i}
-             title={w.provider_name}
-           className='w-[5vh] h[5vh] object-cover rounded-md'
-          src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
-           alt='' /> ))}
-            </div>
-          )}
-
-        {info.watchproviders 
-         && info.watchproviders.rent 
-          && ( <div className='flex gap-x-10  items-center text-white'>
-            <h1>Available on rent </h1>
-            {info.watchproviders.rent.map((w,i) => (
-            <img key={i}
-             title={w.provider_name}
-           className='w-[5vh] h[5vh] object-cover rounded-md'
-          src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
-           alt='' /> ))}
-            </div>
-          )}
-
-
-        {info.watchproviders 
-         && info.watchproviders.buy 
-          && ( <div className='flex gap-x-10  items-center text-white'>
-            <h1>Available on buy </h1>
-            {info.watchproviders.buy.map((w,i) => 
-            (<img key={i}
-            title={w.provider_name}
-           className='w-[5vh] h[5vh] object-cover rounded-md'
-          src={`https://image.tmdb.org/t/p/original/${w.logo_path}`} 
-           alt='' /> ))}
-            </div>
-          )}    
-   </div>
-<hr className='mt-10 border-none h-[2px] bg-zinc-500 mb-5'></hr>
-    {/* ----- part 4 recommendation & similar --------- */}
-    <h1 className='text-2xl font-semibold text-white mb-5'>Recommendations & Similar</h1>
-    <HorizontalCrads data={info.recommendations.length >0  ? info.recommendations : info.similar} />
-  
-      </div>
-      </>
-  ):(
-    <Loading/>
-  );
+    ) : (<Loading />)
 }
 
 export default MovieDetails
