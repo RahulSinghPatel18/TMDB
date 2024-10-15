@@ -19,12 +19,12 @@ export const asynclaodmovie = (id) => async (dispatch) => {
             externalid: externalid.data,
             recommendations: recommendations.data.results,
             similar: similar.data.results,
-            watchproviders: watchproviders.data.results,
-             translations: translations.data.translations.map((t) => t.english_name),
+            translations: translations.data.translations.map((t) => t.english_name),
             videos: videos.data.results.find((m) => m.type === "Trailer"),
+            watchproviders: watchproviders.data.results.ID,
         }
         dispatch(loadmovie(theultimatedetails))
-        console.log('rahul',watchproviders.data.results);
+        // console.log('rahul',watchproviders.data.results);
     } catch (error) {
         console.log(error);
     }

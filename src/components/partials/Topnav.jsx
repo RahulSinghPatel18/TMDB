@@ -32,9 +32,9 @@ useEffect(() => {
   return (
     <>
     <motion.div   initial={{ y: '-100%',opacity:'0' }} 
-                animate={{ y:  '0%',opacity:'1' }} 
+                animate={{ y:  '0',opacity:'1' }} 
                 transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }} 
-     className="w-full h-[8vh] gap-4  z-50 flex justify-center items-center relative opacity-1">
+     className="w-full h-[8vh] gap-4  z-50 flex justify-center items-center relative ">
     <i className="text-zinc-400 text-3xl ri-search-2-line"></i>
     <input ref={inputRef} 
     onChange={(e)=> setquery(e.target.value)} 
