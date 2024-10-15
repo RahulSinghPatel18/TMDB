@@ -80,7 +80,7 @@ const Movies = () => {
             next={ GetMovie} // Fetch more data when user scrolls
             hasMore={hasMore} // Whether there is more data to load
             loader={<h1 className="text-center text-2xl text-[#cf4a6b]">Loading...</h1>} // Loader while fetching data
-            endMessage={<p>No more data</p>} // Message when no more data to fetch
+            endMessage={<p className='text-pink-500'>No more data</p>} // Message when no more data to fetch
           >
 
             <Cards data={movie} title='movie' />

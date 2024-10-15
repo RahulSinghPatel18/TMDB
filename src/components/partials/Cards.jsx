@@ -21,7 +21,7 @@ const Cards = ({data, title,}) => {
         className='w-[25vh] laz mb-5 mx-4 relative' >
          
          {/* --------- popularity circule ------- */}
-         { c.vote_average && ( <div className="w-5 h-5 mx-[22vh] absolute z-40 mt-[30vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">
+         { c.vote_average  && ( <div className="w-5 h-5 mx-[22vh] absolute z-40 mt-[30vh] z-100 p-5 flex justify-center items-center text-sky-600 bg-yellow-300 rounded-3xl">
        {(c.vote_average).toFixed() }%
        </div>
     )}

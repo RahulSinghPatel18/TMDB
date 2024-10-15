@@ -23,6 +23,7 @@ const App = () => {
       <Route path='/' element={<Home/>}/>
       <Route path='/trending' element={<Trending/>}/>
       <Route path='/popular' element={<Popular/>}/>
+      
       <Route path='/movie' element={<Movies/>}/>
       <Route path='/movie/details/:id' element={<MovieDetails/>} />
       <Route path='/movie/details/:id/trailer' element={<Trailer/>}/>
@@ -30,9 +31,11 @@ const App = () => {
       <Route path='/tv' element={<TvShow/>}/>{''}
       <Route path='/tv/details/:id'  element={<TvDetails/>} />
       <Route path='/tv/details/:id/trailer' element={<Trailer/>}/>
+
+      <Route path='/trailer' element={<Trailer/>}/>
       
       <Route path='/person' element={<Person/>}/>{''}
-      <Route path='/person/details/:id' element={<PersonDetails/>} />
+      <Route path='/person/details/:id/' element={<PersonDetails/>} />
    
       <Route path='/notFound' element={<NotFound/>}/>
       <Route path='/about' element={<About/>}/>

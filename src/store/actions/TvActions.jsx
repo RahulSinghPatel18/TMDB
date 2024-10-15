@@ -1,5 +1,6 @@
 import axios from '../../utils/axios'
 import { loadtv } from "../reducers/tvSlice";
+export { removetv } from "../reducers/tvSlice";
 
 
 export const asynclaodtv = (id) => async (dispatch, getState) => {
@@ -11,6 +12,7 @@ export const asynclaodtv = (id) => async (dispatch, getState) => {
         const translations = await axios.get(`/tv/${id}/translations`);
         const videos = await axios.get(`/tv/${id}/videos`);
         const watchproviders = await axios.get(`/tv/${id}/watch/providers`);
+
         let theultimatedetails = {
             detail: detail.data,
             externalid: externalid.data,
@@ -22,6 +24,7 @@ export const asynclaodtv = (id) => async (dispatch, getState) => {
             videos: videos.data.results.find((m) => m.type === "Trailer"),
             watchproviders: watchproviders.data.results.CA,
         }
+        
         console.log(theultimatedetails);
         dispatch(loadtv(theultimatedetails))
     } catch (error) {

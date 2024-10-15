@@ -1,9 +1,10 @@
 
 import axios from '../../utils/axios'
-import { loadmovie,removemovie  } from "../reducers/movieSlice";
+import { loadmovie  } from "../reducers/movieSlice";
+export { removemovie } from "../reducers/movieSlice";
 
 
-export const asynclaodmovie = (id) => async (dispatch, getState) => {
+export const asynclaodmovie = (id) => async (dispatch) => {
     try {
         const detail = await axios.get(`/movie/${id}`)
         const externalid = await axios.get(`/movie/${id}/external_ids`);
@@ -12,19 +13,18 @@ export const asynclaodmovie = (id) => async (dispatch, getState) => {
         const translations = await axios.get(`/movie/${id}/translations`);
         const videos = await axios.get(`/movie/${id}/videos`);
         const watchproviders = await axios.get(`/movie/${id}/watch/providers`);
+
         let theultimatedetails = {
             detail: detail.data,
             externalid: externalid.data,
             recommendations: recommendations.data.results,
             similar: similar.data.results,
-            watchproviders: watchproviders.data.results.ID,
-            translations: translations.data.translations.map(
-                (t) => t.english_name
-            ),
+            watchproviders: watchproviders.data.results,
+             translations: translations.data.translations.map((t) => t.english_name),
             videos: videos.data.results.find((m) => m.type === "Trailer"),
         }
         dispatch(loadmovie(theultimatedetails))
-        console.log(theultimatedetails);
+        console.log('rahul',watchproviders.data.results);
     } catch (error) {
         console.log(error);
     }

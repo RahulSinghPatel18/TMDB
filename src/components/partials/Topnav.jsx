@@ -31,8 +31,9 @@ useEffect(() => {
 
   return (
     <>
-    <motion.div  initial={{ zIndex: -10,x:"-100%" }} 
-                animate={{ zIndex:0 ,x:'0'}}  transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5, opacity:0, }} 
+    <motion.div   initial={{ y: '-100%',opacity:'0' }} 
+                animate={{ y:  '0%',opacity:'1' }} 
+                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }} 
      className="w-full h-[8vh] gap-4  z-50 flex justify-center items-center relative opacity-1">
     <i className="text-zinc-400 text-3xl ri-search-2-line"></i>
     <input ref={inputRef} 

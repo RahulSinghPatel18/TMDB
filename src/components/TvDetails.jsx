@@ -19,6 +19,9 @@ const TvDetails = () => {
             dispatch(removetv())
         }
     }, [id])
+
+
+    
     return info ? (
         <div
             style={{

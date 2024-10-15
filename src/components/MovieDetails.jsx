@@ -12,7 +12,8 @@ const MovieDetails = () => {
     const navigate = useNavigate()
     const { id } = useParams()
     const { info } = useSelector(state => state.movie)
-    console.log(info);
+    
+    // console.log(info);
 
     useEffect(() => {
         dispatch(asynclaodmovie(id))
@@ -23,7 +24,7 @@ const MovieDetails = () => {
     }, [id])
 
 
-
+ 
     return info ? (
         <div
             style={{
