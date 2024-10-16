@@ -13,14 +13,10 @@ const MovieDetails = () => {
     const { id } = useParams()
     const { info } = useSelector(state => state.movie)
     
-    console.log(info);
+    // console.log('::---::',info);
 
     useEffect(() => {
         dispatch(asynclaodmovie(id))
-
-        return () => {
-            dispatch(removemovie())
-        }
     }, [id])
 
 

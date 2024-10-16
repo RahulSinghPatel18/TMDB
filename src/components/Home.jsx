@@ -22,6 +22,7 @@ import Loading from './Loading'
         const { data } = await axios.get(`/trending/all/day`);
        let randomdata =  data.results[(Math.random() * data.results.length).toFixed()];
       setwallpaper(randomdata);
+      console.log("randomdata",randomdata);
      
     } catch (error) {
         console.log('Error:', error);

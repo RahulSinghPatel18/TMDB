@@ -5,10 +5,9 @@ import NotFound from '../../../public/noimage.png'
 
 const Trailer = () => {
     const navigate = useNavigate()
-    const { pathname } = useLocation()
-    const category = pathname.includes('movie') ? 'movie' : 'tv'
-    const ytvideo = useSelector(state => state[category].info.videos)
-    
+    // const { pathname } = useLocation()
+    // const category = pathname.includes('movie') ? 'movie' : 'tv'
+    const ytvideo = useSelector(state => state.movie?.info?.videos)
 
     return (
         <div className='w-screen h-screen absolute top-0 left-0 flex items-center justify-center z-50'>

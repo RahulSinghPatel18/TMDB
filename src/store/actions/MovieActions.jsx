@@ -21,7 +21,7 @@ export const asynclaodmovie = (id) => async (dispatch) => {
             similar: similar.data.results,
             translations: translations.data.translations.map((t) => t.english_name),
             videos: videos.data.results.find((m) => m.type === "Trailer"),
-            watchproviders: watchproviders.data.results.ID,
+            watchproviders: watchproviders.data,
         }
         dispatch(loadmovie(theultimatedetails))
         // console.log('rahul',watchproviders.data.results);
