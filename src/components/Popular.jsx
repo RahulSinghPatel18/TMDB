@@ -16,7 +16,6 @@ const Popular = () => {
   const [page, setpage] = useState(1);
   
 
-
   const GetPopular = async () => {
     try {
       const { data } = await axios.get(`/${category}/popular?page=${page}`);
@@ -80,7 +79,7 @@ const Popular = () => {
             endMessage={<p>No more data</p>} // Message when no more data to fetch
           >
 
-            <Cards data={popular} title='popular' />
+            <Cards data={popular} title={category} />
           </InfiniteScroll>
         </div>
       </div>
