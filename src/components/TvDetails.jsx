@@ -20,6 +20,7 @@ const TvDetails = () => {
         }
     }, [id])
 
+    // console.log("hey babe! ",state.tv)
 
     
     return info ? (
@@ -92,7 +93,7 @@ const TvDetails = () => {
                     <p className="mb-10">{info.translations.join(", ")}</p>
                     <Link
                         className="p-5 bg-[#af4472]  rounded-lg"
-                        to={`${pathname}/trailer`}
+                        to={pathname ? `${pathname}/trailer` : "#"}
                     >
                         <i className="text-xl ri-play-fill mr-3 "></i>
                         Play Trailer

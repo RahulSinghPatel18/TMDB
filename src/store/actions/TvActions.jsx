@@ -22,10 +22,10 @@ export const asynclaodtv = (id) => async (dispatch, getState) => {
                 (t) => t.english_name
             ),
             videos: videos.data.results.find((m) => m.type === "Trailer"),
-            watchproviders: watchproviders.data.results.CA,
+            watchproviders: watchproviders.data.results,
         }
         
-        console.log(theultimatedetails);
+        // console.log('rahulkjnd', watchproviders.data.results);
         dispatch(loadtv(theultimatedetails))
     } catch (error) {
         console.log(error);

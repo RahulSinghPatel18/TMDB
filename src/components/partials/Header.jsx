@@ -30,7 +30,7 @@ const Header = ({ data }) => {
 
             <p className='text-[#c6c6c6]'>
                 <i className="text-yellow-500 ri-megaphone-fill"></i>{" "}
-                {data.release_date || "No Information"}
+                {data.release_date || data.first_air_date || "No Information"}
                 <i className="ml-5  text-yellow-500 ri-album-fill"></i>{" "}
                 {data.media_type.toUpperCase()}
             </p>
