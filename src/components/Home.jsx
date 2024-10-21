@@ -84,7 +84,7 @@ import Loading from './Loading'
      <>
       {isVisible1 && <Sidenav isVisible1={isVisible1} setIsVisible1={setIsVisible1} />}
      
-        <div className=" bg-zinc-900 h-[1152.4vh] md:w-[80%] md:h-full ">  
+        <div className=" bg-zinc-900 h-[1157vh] md:w-[80%] md:h-full ">  
         <Topnav/>
        
          <Header data={wallpaper}  />
