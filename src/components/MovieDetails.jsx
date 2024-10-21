@@ -29,7 +29,7 @@ const MovieDetails = () => {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
-            className="relative w-screen sm:h-[150vh] overflow-hidden h-[200vh] px-[10%] font-normal"
+            className="relative bg-black w-screen sm:h-[150vh] overflow-hidden h-[200vh] px-[10%] font-normal"
         >
             {/* Part 1 navigation */}
             <nav className='w-full h-[10vh] flex text-white  items-center gap-10 text-xl'>

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
+const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,6 +27,7 @@ const Contact = () => {
    <div className="flex w-[100%] h-[100%] items-center justify-center bg-black">
      <div className=" bg-zinc-900 text-white flex items-center justify-center">
       <div className=" w-[70vh] p-8 bg-zinc-800 rounded-lg shadow-lg">
+      <i  onClick={(()=>navigate(-1))} className='text-white ri-arrow-left-line'></i>
         <h1 className="text-4xl font-bold text-center text-[#c6326d] mb-8">Contact Us</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">

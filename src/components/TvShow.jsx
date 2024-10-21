@@ -52,7 +52,7 @@ const TvShow = () => {
   
   return tv.length > 0 ? (
     <>
-      <div className="px-[2%] w-screen h-screen bg-zinc-800">
+      <div className=" w-screen h-screen bg-zinc-800">
         <div className="w-full flex items-center justify-between py-4">
           <h1 className="text-2xl text-white font-semibold">
             <i

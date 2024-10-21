@@ -8,7 +8,8 @@ const Sidenav = () => {
     <>
     <motion.div  initial={{ x: '-100%' }} 
                 animate={{ x:  '0%' }} 
-                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}  className="w-[20%] h-full p-7  text-white  border-r-2 border-zinc-400 p-2">
+                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }} 
+                 className="w-[20%] h-full p-7  text-white  border-r-2 border-zinc-400 ">
       <h1 className='text-2xl text-white font-bold '>
       <i className="text-[#f954ac] mr-2  ri-tv-fill hover:text-[#7b7ef8] transition-all duration-300"></i>
         <span className='text-[18px] hover:text-[#7b7ef8] transition-all duration-300 '>TMDB</span>

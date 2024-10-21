@@ -16,7 +16,7 @@ const Header = ({ data }) => {
             backgroundRepeat: "no-repeat",
         }} 
         initial={{y:'-100%'}} animate={{y:'0%'}} transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5,  }} 
-        className="md:w-full md:h-[49vh] flex flex-col justify-end items-start p-[5%] ">
+        className=" md:w-full h-[49vh] flex flex-col justify-end items-start p-[5%] ">
             <h1 className='text-5xl mb-2 font-black text-[#d2d2d2] w-[70%]'>
               {data.title || data.orignal_name || data.orignal_title || data.name}
             </h1>

@@ -31,10 +31,10 @@ const TvDetails = () => {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
-            className="relative w-screen text-white h-[170vh] sm:h-[130vh] px-[10%] font-normal"
+            className="relative w-screen text-white h-[170vh] sm:h-[130vh]  font-normal"
         >
             {/* Part 1 navigation */}
-            <nav className='w-full h-[10vh] text-white flex items-center gap-10 text-xl'>
+            <nav className='w-full h-[10vh] bg-black text-white flex items-center gap-10 text-xl'>
                 <Link
                     onClick={() => navigate(-1)}
                     className="hover:text-[#af4472] ri-arrow-left-line"
