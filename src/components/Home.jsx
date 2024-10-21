@@ -51,13 +51,45 @@ import Loading from './Loading'
 
 
 
+
+
+  const [isVisible1, setIsVisible1] = useState(true);
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        setIsVisible1(false); // Screen md se chhoti ho to hide ho jayega
+      } else {
+        setIsVisible1(true);  // Screen md ya badi ho to visible ho jayega
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    
+    // Initial check for component mount ke baad
+    handleResize();
+
+    // Cleanup event listener when component unmount ho
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+
+
+
+
+
+
+
    return wallpaper ? (
      <>
-     <Sidenav/>  
+      {isVisible1 && <Sidenav isVisible1={isVisible1} setIsVisible1={setIsVisible1} />}
      
-        <div className="w-[80%] h-full">  
+        <div className=" bg-zinc-900 h-[1152.4vh] md:w-[80%] md:h-full ">  
         <Topnav/>
-         <Header data={wallpaper}/>
+       
+         <Header data={wallpaper}  />
+     
+    
 
          <div className="mb-3 flex justify-between mt-1 ">
         <h1 className="text-2xl font-semibold text-zinc-300 px-3">

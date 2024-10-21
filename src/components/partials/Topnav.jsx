@@ -35,13 +35,13 @@ useEffect(() => {
     <motion.div   initial={{ y: '-100%',opacity:'0' }} 
                 animate={{ y:  '0',opacity:'1' }} 
                 transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }} 
-     className="h-[8vh] gap-4  z-50 flex justify-center items-center relative ">
-    <i className="text-zinc-400 text-3xl ri-search-2-line"></i>
+     className="h-[8vh] w-[70vh] md:w-full gap-4   z-50 flex justify-center items-center relative ">
+    <i className="text-zinc-400 pl-4 text-3xl ri-search-2-line"></i>
     <input ref={inputRef} 
     onChange={(e)=> setquery(e.target.value)} 
     value={query} className='w-[60vh] p-2 outline-none  text-white bg-transparent    rounded' 
-    type="text" placeholder=' search...' />
-
+    type="text" placeholder=' Search here...' />
+ 
 
 
   <i  onClick={()=>setvisible(true)} className='w-5 cursor-pointer text-white text-2xl mr-5 sm:hidden ri-menu-2-line'  ></i>     

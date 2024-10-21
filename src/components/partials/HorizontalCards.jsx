@@ -9,11 +9,12 @@ const HorizontalCards = ({data}) => {
     <motion.div  initial={{ zIndex: -10, x:"+100%" }} 
     animate={{ zIndex:0 ,x:'0'}} 
      transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5, opacity:0, }} 
-     className="w-full h-[33vh] overflow-y-hidden  ">
+     className="w-full  md:h-[33vh] md:overflow-y-hidden   ">
       
-      <div className="w-[100%] flex h-[40vh] px-2">
+      <div className="w-[100%] grid-cols-1  px-2 md:flex ">
         {data.length > 0 ? data.map((d, i) => (
-          <Link to={`/${d.media_type}/details/${d.id}`} key={i} className="min-w-[20%] h-[55vh] mr-8 overflow-hidden bg-zinc-900 rounded-xl">
+          <Link to={`/${d.media_type}/details/${d.id}`} key={i} 
+          className="min-w-[20%] h-[55vh] mr-8 overflow-hidden  bg-zinc-900 rounded-xl ">
            
             <img
               className="w-full h-[30%] object-cover hover:scale-110 transition-all duration-300 rounded-lg"

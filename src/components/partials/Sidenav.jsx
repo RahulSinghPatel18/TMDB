@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {motion} from 'framer-motion'
 
-const Sidenav = () => {
+const Sidenav = ({isVisible1,setIsVisible1}) => {
  
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        setIsVisible1(false); // Screen md se chhoti ho to hide ho jayega
+      } else {
+        setIsVisible1(true);  // Screen md ya badi ho to visible ho jayega
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    
+    // Initial check for component mount ke baad
+    handleResize();
+
+    // Cleanup event listener when component unmount ho
+    return () => window.removeEventListener('resize', handleResize);
+  }, [setIsVisible1]);
+
+
+
   return (
     <>
     <motion.div  initial={{ x: '-100%' }} 
