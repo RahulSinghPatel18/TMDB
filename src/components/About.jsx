@@ -7,7 +7,6 @@ const About = () => {
   const navigate = useNavigate()
   return (
   <>
-  <div>
   <i onClick={()=>navigate('/')} className="text-white text-3xl absolute pl-4 pt-3 ri-arrow-left-line"></i>
   <div className="flex w-full h-screen items-center justify-center bg-black p-5">
       <div className="flex flex-col items-center justify-center text-white p-4">
@@ -25,7 +24,6 @@ const About = () => {
         </div>
       </div>
     </div>
-  </div>
   </>
   );
 };

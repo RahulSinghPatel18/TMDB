@@ -24,7 +24,7 @@ export const asynclaodmovie = (id) => async (dispatch) => {
             watchproviders: watchproviders.data.results,
         }
         dispatch(loadmovie(theultimatedetails))
-        console.log('rahul',watchproviders.data.results);
+        // console.log('rahul',watchproviders.data.results);
     } catch (error) {
         console.log(error);
     }
