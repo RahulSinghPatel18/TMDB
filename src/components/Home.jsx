@@ -77,9 +77,7 @@ import Loading from './Loading'
 
 
  if (trending==null) {
-  return <div>
-    data is null
-  </div>
+  return <Loading/>
   
  }
 

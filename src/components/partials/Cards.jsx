@@ -15,7 +15,7 @@ const Cards = ({data, title,}) => {
    <motion.div  initial={{ zIndex: -10,y:"+100%" }} 
                 animate={{ zIndex:0 ,y:'0'}} 
                  transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5, opacity:0, }} 
-   className='flex flex-wrap w-full bg-zinc-800  h-[100%]  p-7 '>
+   className='flex justify-center flex-wrap w-full bg-zinc-800  h-[100%] pt-5  '>
        {data.map((c, i)=>
        <Link key={i} to={`/${c.media_type || title}/details/${c.id}`}
         className='w-[25vh] laz mb-5 mx-4 relative' >

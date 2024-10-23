@@ -10,18 +10,19 @@ const Trailer = () => {
     const ytvideo = useSelector(state => state.movie?.info?.videos)
 
     return (
-        <div className='w-screen h-screen absolute top-0 left-0 flex items-center justify-center z-50'>
+        <div className='justify-center items-center flex flex-1'>
             <Link
                 onClick={() => navigate(-1)}
                 className="absolute hover:text-[#b54c6f] ri-close-fill text-3xl text-white right-[5%] top-[5%]"
             ></Link>
+
            {ytvideo ?( <ReactPlayer
                 controls
-                height={500}
-                width={900}
+                width='80%'
+                height='70%'
                 url={`https://www.youtube.com/watch?v=${ytvideo.key}`} />
-):<NotFound/>
-           }
+            ):<NotFound/>
+        }
         </div>
     )
 }

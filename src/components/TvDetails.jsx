@@ -31,7 +31,7 @@ const TvDetails = () => {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
-            className="relative w-screen text-white h-[170vh] sm:h-[130vh]  font-normal"
+            className="relative w-screen text-white  h-[1215vh] sm:h-[130vh]  font-normal"
         >
             {/* Part 1 navigation */}
             <nav className='w-full h-[10vh] bg-black text-white flex items-center gap-10 text-xl'>

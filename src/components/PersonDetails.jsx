@@ -25,7 +25,7 @@ const PersonDetails = () => {
     }, [id]);
 
     return info ? (
-        <div className="px-[10%] w-screen overflow-hidden sm:h-[150vh] h-[250vh] bg-[#1F1E24] ">
+        <div className="px-[10%] w-screen overflow-hidden sm:h-[170vh] h-[710vh] bg-[#1F1E24] ">
             {/* Part 1 navigation */}
             <nav className="h-[10vh] text-white w-full text-zinc-100 flex items-center gap-10 text-xl ">
                 <Link
@@ -130,13 +130,13 @@ const PersonDetails = () => {
                         Biography
                     </h1>
                     <p className="text-zinc-400 mt-3 ">
-                        {info.detail.biography}
+                        {info.detail.biography.slice(0,800)}
                     </p>
 
-                    <h1 className="mt-5 text-lg text-zinc-400 font-semibold ">
+                    <h1 className="mt-5 text-lg text-zinc-400  mb-10 font-semibold ">
                         Known For
                     </h1>
-                    <HorizontalCards data={info.combinedCredits.cast} />
+                    <HorizontalCards  data={info.combinedCredits.cast} />
 
                     <div className="w-full flex justify-between">
                         <h1 className="mt-5 text-xl text-zinc-400 font-semibold ">
