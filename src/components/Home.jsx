@@ -76,12 +76,12 @@ import Loading from './Loading'
 
 
 
-//  if (trending==null) {
-//   return <div>
-//     data is null
-//   </div>
+ if (trending==null) {
+  return <div>
+    data is null
+  </div>
   
-//  }
+ }
 
 
 
