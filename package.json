@@ -9,6 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  
+  "proxy": "https://api.themoviedb.org/3",
+
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.8",
     "axios": "^1.7.7",
